@@ -7,7 +7,7 @@ export default function Dropdown() {
     <div className="w-full text-right lg:w-20 ">
       <Menu as="div" className="relative inline-block text-center">
         <div>
-          <Menu.Button className="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring">
+          <Menu.Button   className="block rounded-lg bg-customBlue px-5 py-3 text-sm font-medium text-white transition hover:bg-customOrange focus:outline-none focus:ring">
             Filter
           </Menu.Button>
         </div>
@@ -26,7 +26,7 @@ export default function Dropdown() {
                 {({ active }) => (
                   <button
                     className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                      active ? "bg-gray-500 text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     {active ? (
@@ -63,7 +63,7 @@ function EditInactiveIcon(props) {
       <path
         d="M4 13V16H7L16 7L13 4L4 13Z"
         fill="#EDE9FE"
-        stroke="#A78BFA"
+        stroke="#0021A5"
         strokeWidth="2"
       />
     </svg>
@@ -80,8 +80,8 @@ function EditActiveIcon(props) {
     >
       <path
         d="M4 13V16H7L16 7L13 4L4 13Z"
-        fill="#8B5CF6"
-        stroke="#C4B5FD"
+        fill="#FA4616"
+        stroke="#0021A5"
         strokeWidth="2"
       />
     </svg>

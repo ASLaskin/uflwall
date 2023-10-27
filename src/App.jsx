@@ -1,14 +1,19 @@
 import { useState } from 'react'
 import './App.css'
-import Header from './header'
+import Layout from './layout';
+import Home from './pages/home';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 
 function App() {
   return (
-    <>
-      <Header />
-      <h1 className='text-blue-500'>UFL Wall</h1>
-    </>
+    <Router>
+      <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+      </Layout>
+    </Router>
   )
 }
 

@@ -16,8 +16,6 @@ function Header() {
 
           {/* HERE ARE BUTTONS */}
           <div className="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
-           
-
             {/* CREATE BUTTON */}
             <button
               className="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
@@ -30,16 +28,17 @@ function Header() {
               <div className="flex">
                 <input
                   type="text"
-                  className="block rounnded-lg"
+                  className="block rounded-lg border-2 border-indigo-600 py-2 mr-1 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                   placeholder="Search..."
                 />
                 <button
                   type="submit"
-                  className="block rounded-lg bg-indigo-600 px-2 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
+                  className="block rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                 >
                   Find
                 </button>
               </div>
+
               <Dropdown />
             </div>
           </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import Dropdown from "./dropdown";
-import Home from "./pages/home";
 
 // Header created from header UI and modified to fit needs
 function Header() {

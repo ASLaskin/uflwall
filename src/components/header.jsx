@@ -1,8 +1,19 @@
-import React from "react";
+import { useState } from "react";
 import Dropdown from "./dropdown";
+import Modal from "./modal";
 
 // Header created from header UI and modified to fit needs
 function Header() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <header className="bg-white">
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -11,7 +22,7 @@ function Header() {
           <div className="text-center sm:text-left">
             <h1 className="text-6xl font-bold text-customBlue sm:text-5xl md:text-7xl">
               <a href="/">
-              UFL<a className="text-customOrange">Wall</a>
+                UFL<a className="text-customOrange">Wall</a>
               </a>
             </h1>
           </div>
@@ -22,9 +33,11 @@ function Header() {
             <button
               className="block rounded-lg bg-customBlue px-5 py-3 text-sm font-medium text-white transition hover:bg-customOrange focus:outline-none focus:ring"
               type="button"
+              onClick={handleModalOpen}
             >
               Create
             </button>
+            {isModalOpen && <Modal show={isModalOpen} handleClose={handleModalClose} />}
             <div className="flex flex-row">
               {/* Search */}
               <div className="flex">

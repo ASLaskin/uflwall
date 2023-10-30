@@ -24,7 +24,6 @@ dist-ssr
 *.sw?
 
 # Firebase configuration files
-firebase.json
 .firebaserc
 firestore.indexes.json
 firestore.rules

@@ -37,9 +37,12 @@ function Header() {
             >
               Create
             </button>
-            {isModalOpen && <Modal show={isModalOpen} handleClose={handleModalClose} />}
+            {/* MODAL */}
+            {isModalOpen && (
+              <Modal show={isModalOpen} handleClose={handleModalClose} />
+            )}
             <div className="flex flex-row">
-              {/* Search */}
+              {/* SEARCH */}
               <div className="flex">
                 <input
                   type="text"

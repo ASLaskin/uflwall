@@ -107,7 +107,7 @@ function Modal({ handleClose }) {
 
             <button
               type="submit"
-              className="mt-4 bg-customBlue hover:bg-customOrange text-white font-bold py-2 px-4 rounded"
+              className="mt-4 bg-customBlue hover:bg-customOrange text-white font-bold py-2 px-4 rounded w-full"
               onClick={handleSubmit}
             >
               Submit

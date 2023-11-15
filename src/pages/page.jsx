@@ -31,13 +31,18 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <div>
-        <h1 className="text-black">Entries from Students:</h1>
-        <ul>
+      <div className="container mx-auto mt-8">
+        <h1 className="text-3xl font-bold text-customBlue mb-4">
+          Entries from Students:
+        </h1>
+        <ul className="list-disc pl-6">
           {entries.map((entry) => (
-            <li key={entry.id} className="text-black flex flex-row space-x-7">
-              <p> {entry.note}</p>
-              <p>-{entry.date}</p>
+            <li
+              key={entry.id}
+              className="text-black flex flex-row space-x-2 mb-2"
+            >
+              <p className="text-lg">{entry.note}</p>
+              <p className="text-gray-500">- {entry.date}</p>
             </li>
           ))}
         </ul>

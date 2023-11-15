@@ -1,17 +1,56 @@
-import { useState } from "react";
-
-function Modal({ handleClose }) {
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+function Modal({ handleClose, firebaseApp }) {
+  //This closes the modal
   const handleCloseModal = () => {
     handleClose();
   };
+  //This is where the authorization
   const handleSendCode = (e) => {
     e.preventDefault();
     console.log("send code");
   };
 
-  const handleSubmit = (e) => {
+  //Handle submit is where the note is submitted to the database
+  const handleSubmit = async (e) => {
+    const db = getFirestore(firebaseApp);
     e.preventDefault();
-    console.log("submit");
+
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${day}/${month}/${year}`;
+
+    const email = document.getElementById("email").value;
+    const code = document.getElementById("code").value;
+    const note = document.getElementById("note").value;
+
+    if (email === "") {
+      alert("Please enter your email");
+      return;
+    }
+    if (code === "") {
+      alert("Please enter your code");
+      return;
+    }
+    if (note === "") {
+      alert("Please enter your note");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "notes"), {
+        email,
+        code,
+        note,
+        date: currentDate,
+      });
+
+      handleClose();
+      window.location.reload();
+    } catch (error) {
+      console.error("Error adding data to Firebase collection:", error);
+    }
   };
 
   return (
@@ -65,7 +104,7 @@ function Modal({ handleClose }) {
                 className="w-full px-3 py-2 text-black border-customBlue border-2 bg-white rounded-lg focus:outline-none"
                 type="text"
                 id="email"
-                pattern="[a-z0-9._%+-]+@ufl.edu"
+                // pattern="[a-z0-9._%+-]+@ufl.edu"  commented out for testing purposes
                 placeholder="Enter your @ufl.edu email"
               />
               <button
@@ -102,6 +141,7 @@ function Modal({ handleClose }) {
                 className="w-full px-3 py-2 text-black border-customBlue border-2 bg-white rounded-lg focus:outline-none"
                 placeholder="Enter your note here.."
                 maxLength="280"
+                id="note"
               />
             </div>
 

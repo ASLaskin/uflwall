@@ -3,7 +3,7 @@ import Dropdown from "./dropdown";
 import Modal from "./modal";
 
 // Header created from header UI and modified to fit needs
-function Header() {
+function Header({ firebaseApp }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalOpen = () => {

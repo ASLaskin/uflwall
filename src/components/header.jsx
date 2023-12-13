@@ -47,7 +47,7 @@ function Header({ firebaseApp }) {
                 <input
                   type="text"
                   className="block rounded-lg border-2 bg-white border-customBlue py-2 mr-1 focus:outline-none focus:ring-2 focus:ring-indigo-200"
-                  placeholder="Search..."
+                  placeholder="(e.g. 11/14/2023)"
                 />
                 <button
                   type="submit"

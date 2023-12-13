@@ -10,23 +10,37 @@ const db = getFirestore(firebaseApp);
 const Home = () => {
   const [entries, setEntries] = useState([]);
 
+  //They way this works is that it fetches all the entries from the database and then displays them on the page
+  //The database is storing them as year -> month -> entries -> entry
   useEffect(() => {
     const fetchEntries = async () => {
       try {
-        const notesCollection = collection(db, "notes");
-        const snapshot = await getDocs(notesCollection);
-        const entriesData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const monthsList = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10","11", "12"];
+  
+        const entriesData = [];
+  
+        for (const month of monthsList) {
+          const entriesCollectionRef = collection(db, "2023", month, "entries");
+          const entriesSnapshot = await getDocs(entriesCollectionRef);
+  
+          entriesSnapshot.forEach((entryDoc) => {
+            entriesData.push({
+              id: entryDoc.id,
+              date: month,
+              ...entryDoc.data(),
+            });
+          });
+        }
+  
         setEntries(entriesData);
       } catch (error) {
         console.error("Error fetching entries:", error);
       }
     };
-
+  
     fetchEntries();
-  }, []);
+  }, [db]);
+  
 
   return (
     <div>
@@ -42,7 +56,7 @@ const Home = () => {
               className="text-black flex flex-row space-x-2 mb-2"
             >
               <p className="text-lg">{entry.note}</p>
-              <p className="text-gray-500">- {entry.date}</p>
+              <p className="text-gray-500">- {entry.timestamp}</p>
             </li>
           ))}
         </ul>

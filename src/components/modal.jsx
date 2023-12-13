@@ -27,6 +27,8 @@ function Modal({ handleClose, firebaseApp }) {
       alert("Please fill out all fields");
       return;
     }
+    const timestamp = new Date().toISOString();
+    const monthDayAndYear = timestamp.slice(0, 10); 
   
     try {
       const firestore = getFirestore(firebaseApp);
@@ -37,7 +39,7 @@ function Modal({ handleClose, firebaseApp }) {
         email,
         code,
         note,
-        timestamp: serverTimestamp(),
+        timestamp: monthDayAndYear,
       });
   
       alert("Note added successfully!");

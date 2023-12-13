@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, doc, serverTimestamp } from "firebase/firestore";
 function Modal({ handleClose, firebaseApp }) {
   //This closes the modal
   const handleCloseModal = () => {
@@ -11,15 +11,12 @@ function Modal({ handleClose, firebaseApp }) {
   };
 
   //Handle submit is where the note is submitted to the database
+
   const handleSubmit = async (e) => {
-    const db = getFirestore(firebaseApp);
     e.preventDefault();
 
     const date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    let currentDate = `${day}/${month}/${year}`;
+    const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 
     const email = document.getElementById("email").value;
     const code = document.getElementById("code").value;
@@ -39,17 +36,18 @@ function Modal({ handleClose, firebaseApp }) {
     }
 
     try {
-      await addDoc(collection(db, "notes"), {
+      const firestore = getFirestore(firebaseApp);
+      const collectionRef = collection(firestore, formattedDate);
+      const docRef = await addDoc(collectionRef, {
         email,
         code,
         note,
-        date: currentDate,
+        timestamp: serverTimestamp()
       });
 
-      handleClose();
-      window.location.reload();
+      alert("Note added successfully!");
     } catch (error) {
-      console.error("Error adding data to Firebase collection:", error);
+      console.error("Error adding document: ", error);
     }
   };
 

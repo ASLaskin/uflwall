@@ -14,37 +14,32 @@ function Modal({ handleClose, firebaseApp }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const date = new Date();
-    const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-
+    const formattedDate = `${date.getMonth() + 1}`;
+    // ^ Assuming you want to store entries based on the month only
+  
     const email = document.getElementById("email").value;
     const code = document.getElementById("code").value;
     const note = document.getElementById("note").value;
-
-    if (email === "") {
-      alert("Please enter your email");
+  
+    if (email === "" || code === "" || note === "") {
+      alert("Please fill out all fields");
       return;
     }
-    if (code === "") {
-      alert("Please enter your code");
-      return;
-    }
-    if (note === "") {
-      alert("Please enter your note");
-      return;
-    }
-
+  
     try {
       const firestore = getFirestore(firebaseApp);
-      const collectionRef = collection(firestore, formattedDate);
-      const docRef = await addDoc(collectionRef, {
+      const monthDocRef = doc(collection(firestore, "2023"), formattedDate);
+      const entriesCollectionRef = collection(monthDocRef, "entries");
+  
+      await addDoc(entriesCollectionRef, {
         email,
         code,
         note,
-        timestamp: serverTimestamp()
+        timestamp: serverTimestamp(),
       });
-
+  
       alert("Note added successfully!");
     } catch (error) {
       console.error("Error adding document: ", error);

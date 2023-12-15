@@ -43,6 +43,8 @@ function Modal({ handleClose, firebaseApp }) {
       });
   
       alert("Note added successfully!");
+      handleClose();
+      window.location.reload();
     } catch (error) {
       console.error("Error adding document: ", error);
     }

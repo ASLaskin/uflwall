@@ -44,14 +44,33 @@ function Header({ firebaseApp }) {
             <div className="flex flex-row">
               {/* SEARCH */}
               <div className="flex">
-                <input
-                  type="text"
-                  className="block rounded-lg border-2 bg-white border-customBlue py-2 mr-1 focus:outline-none focus:ring-2 focus:ring-indigo-200"
-                  placeholder="(e.g. 11/14/2023)"
-                />
+                <div className="mr-1">
+                  <label htmlFor="month" className="sr-only">
+                    Month
+                  </label>
+                  <input
+                    type="text"
+                    id="month"
+                    className="block w-12 md:w-16 rounded-lg border-2 bg-white text-black border-customBlue py-2 px-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                    maxLength={2}
+                    placeholder="MM"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="year" className="sr-only">
+                    Year
+                  </label>
+                  <input
+                    type="text"
+                    id="year"
+                    maxLength={4}
+                    className="block w-20 md:w-24 rounded-lg border-2 bg-white text-black border-customBlue py-2 px-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                    placeholder="YYYY"
+                  />
+                </div>
                 <button
                   type="submit"
-                  className="block rounded-lg bg-customBlue px-5 py-3 text-sm font-medium text-white transition hover:bg-customOrange focus:outline-none focus:ring"
+                  className="block rounded-lg bg-customBlue px-4 py-2 text-sm font-medium text-white transition hover:bg-customOrange focus:outline-none focus:ring"
                 >
                   Find
                 </button>

@@ -8,7 +8,7 @@ import HashLoader from "react-spinners/HashLoader";
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
-const Entries = () => {
+const Entries = ({month,year,searchClicked}) => {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -17,25 +17,11 @@ const Entries = () => {
   useEffect(() => {
     const fetchEntries = async () => {
       try {
-        const monthsList = [
-          "01",
-          "02",
-          "03",
-          "04",
-          "05",
-          "06",
-          "07",
-          "08",
-          "09",
-          "10",
-          "11",
-          "12",
-        ];
-
         const entriesData = [];
 
-        for (const month of monthsList) {
-          const entriesCollectionRef = collection(db, "2023", month, "entries");
+        // Use month and year only if searchClicked is true
+        if (searchClicked) {
+          const entriesCollectionRef = collection(db, year, month, "entries");
           const entriesSnapshot = await getDocs(entriesCollectionRef);
 
           entriesSnapshot.forEach((entryDoc) => {
@@ -45,6 +31,22 @@ const Entries = () => {
               ...entryDoc.data(),
             });
           });
+        } else {
+          // Fetch all entries if search button is not clicked
+          const monthsList = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+
+          for (const currentMonth of monthsList) {
+            const entriesCollectionRef = collection(db, "2023", currentMonth, "entries");
+            const entriesSnapshot = await getDocs(entriesCollectionRef);
+
+            entriesSnapshot.forEach((entryDoc) => {
+              entriesData.push({
+                id: entryDoc.id,
+                date: currentMonth,
+                ...entryDoc.data(),
+              });
+            });
+          }
         }
 
         setEntries(entriesData);
@@ -55,7 +57,7 @@ const Entries = () => {
     };
 
     fetchEntries();
-  }, [db]);
+  }, [db, month, year, searchClicked]);
 
   return (
     <div>

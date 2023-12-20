@@ -3,7 +3,7 @@ import Dropdown from "./dropdown";
 import Modal from "./modal";
 
 // Header created from header UI and modified to fit needs
-function Header({ firebaseApp }) {
+function Header({ firebaseApp,onSearch,selectedMonth,selectedYear,searchClicked }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const date = new Date();
@@ -84,6 +84,9 @@ function Header({ firebaseApp }) {
                 <button
                   type="submit"
                   className="block rounded-lg bg-customBlue px-4 py-2 text-sm font-medium text-white transition hover:bg-customOrange focus:outline-none focus:ring"
+                  onClick={() => {
+                    onSearch();
+                  }}
                 >
                   Find
                 </button>

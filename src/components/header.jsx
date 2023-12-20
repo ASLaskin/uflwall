@@ -31,7 +31,7 @@ function Header({ firebaseApp }) {
           <div className="text-center sm:text-left">
             <h1 className="text-6xl font-bold text-customBlue sm:text-5xl md:text-7xl">
               <a href="/">
-                UFL<a className="text-customOrange">Wall</a>
+                UF<a className="text-customOrange">Wall</a>
               </a>
             </h1>
           </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/header";
+import Header from "./header";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import firebaseConfig from "../../firebaseConfig";
 import { initializeApp } from "firebase/app";
@@ -8,7 +8,7 @@ import HashLoader from "react-spinners/HashLoader";
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
-const Home = () => {
+const Entries = () => {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -59,7 +59,6 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
       <div className="container mx-auto mt-8">
         <h1 className="text-3xl font-bold text-customBlue ml-4 pb-3">
           Entries from Students:
@@ -92,4 +91,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Entries;

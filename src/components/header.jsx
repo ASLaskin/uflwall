@@ -5,6 +5,15 @@ import Modal from "./modal";
 // Header created from header UI and modified to fit needs
 function Header({ firebaseApp }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const date = new Date();
+  const currentMonth = `${date.getMonth() + 1}`;
+  const currentYear = `${date.getFullYear()}`;
+
+  const [year, setYear] = useState(currentYear);
+  const [month,setMonth] = useState(currentMonth);
+
+
 
   const handleModalOpen = () => {
     setIsModalOpen(true);
@@ -54,6 +63,8 @@ function Header({ firebaseApp }) {
                     className="block w-12 md:w-16 rounded-lg border-2 bg-white text-black border-customBlue py-2 px-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                     maxLength={2}
                     placeholder="MM"
+                    value={month}
+                    onChange={(e) => setMonth(e.target.value)}
                   />
                 </div>
                 <div>
@@ -66,6 +77,8 @@ function Header({ firebaseApp }) {
                     maxLength={4}
                     className="block w-20 md:w-24 rounded-lg border-2 bg-white text-black border-customBlue py-2 px-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"
                     placeholder="YYYY"
+                    value={year}
+                    onChange={(e) => setYear(e.target.value)}
                   />
                 </div>
                 <button

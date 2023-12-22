@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -27,7 +26,14 @@ const About = () => {
             Creators
           </h2>
           <p className="text-lg text-gray-700">
-            UFL Wall was created by University Of Florida students{" "} and the source code is available <a href="https://github.com/ASLaskin/uflwall" className="underline text-customBlue hover:text-customOrange">Here</a>
+            UFL Wall was created by University Of Florida students and the
+            source code is available{" "}
+            <a
+              href="https://github.com/ASLaskin/uflwall"
+              className="underline text-customBlue hover:text-customOrange"
+            >
+              Here
+            </a>
           </p>
         </div>
 
@@ -50,7 +56,7 @@ const About = () => {
             </li>
           </ul>
         </div>
-        <a href="https://uflwall.web.app/"  rel="noopener noreferrer">
+        <a href="https://uflwall.web.app/" rel="noopener noreferrer">
           <button className="mt-8 px-4 py-2 text-sm font-medium text-white bg-customBlue rounded-md hover:bg-customOrange focus:outline-none focus:ring focus:border-blue-300">
             Back to Home
           </button>

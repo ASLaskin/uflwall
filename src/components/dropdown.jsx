@@ -8,7 +8,7 @@ export default function Dropdown() {
       <Menu as="div" className="relative inline-block text-center">
         <div>
           <Menu.Button   className="block rounded-lg bg-customBlue px-5 py-3 text-sm font-medium text-white transition hover:bg-customOrange focus:outline-none focus:ring">
-            Filter
+            More
           </Menu.Button>
         </div>
         <Transition
@@ -24,6 +24,7 @@ export default function Dropdown() {
             <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (
+                  <a href="https://uflwall.web.app/about">
                   <button
                     className={`${
                       active ? "bg-gray-500 text-white" : "text-gray-900"
@@ -40,8 +41,9 @@ export default function Dropdown() {
                         aria-hidden="true"
                       />
                     )}
-                    Edit
+                    About
                   </button>
+                  </a>
                 )}
               </Menu.Item>
             </div>

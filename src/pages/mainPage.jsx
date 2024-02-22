@@ -5,7 +5,7 @@ import { useState } from "react";
 const MainPage = () => {
     const [searchClicked, setSearchClicked] = useState(false);
     const [selectedMonth, setSelectedMonth] = useState("");
-    const [selectedYear, setSelectedYear] = useState("");
+    const [selectedYear, setSelectedYear] = useState("2024");
 
     const handleSearch = () => {
         setSearchClicked(true);

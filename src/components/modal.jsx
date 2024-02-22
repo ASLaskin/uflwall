@@ -32,7 +32,7 @@ function Modal({ handleClose, firebaseApp }) {
   
     try {
       const firestore = getFirestore(firebaseApp);
-      const monthDocRef = doc(collection(firestore, "2023"), formattedDate);
+      const monthDocRef = doc(collection(firestore, "2024"), formattedDate);
       const entriesCollectionRef = collection(monthDocRef, "entries");
   
       await addDoc(entriesCollectionRef, {

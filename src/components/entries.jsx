@@ -34,13 +34,11 @@ const Entries = ({ month, year, searchClicked }) => {
           });
         } else {
           // Fetch all entries if search button is not clicked
-          const monthsList = [
-            "01", "02", "03", "04", "05", "06",
-            "07", "08", "09", "10", "11", "12",
-          ];
+          const monthsList = ["12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1"];
+          console.log("monthsList: ", monthsList);
   
           for (const currentMonth of monthsList) {
-            const entriesCollectionRef = collection(db, "2023", currentMonth, "entries");
+            const entriesCollectionRef = collection(db, "2024", currentMonth, "entries");
             const entriesSnapshot = await getDocs(entriesCollectionRef);
   
             entriesSnapshot.forEach((entryDoc) => {
